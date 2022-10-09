@@ -1,0 +1,218 @@
+--
+-- Affichage sur un afficheur 7 segments 5611AH à cathode commune
+--
+-- Mehdi Ben Djedidia 09/10/2022
+--
+-- Mise en oeuvre d'une table de données à afficher pour tester la mémoire sur FPGA
+-- Mise en oeuvre de la généricité
+--
+
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- Afficher le chiffre N en entrée (codage bcd) en allumant les 8 leds (A à G) du 5611AH
+--
+--			A
+--		   _
+--		F | |B
+--			G
+--			_
+--		 E| | C
+--			_
+--			D
+--
+-- rappel du codage binaire BCD
+
+--	0	0000
+--	1	0001
+--	2	0010
+--	3	0011
+--	4	0100
+--	5	0101
+--	6	0110
+--	7	0111
+--	8	1000
+--	9	1001
+--
+-- pin out du 5611AH (cathode commune):
+--
+--   10(G) 9(F) 8(GROUND) 7(A) 6(B)
+--
+--				A
+--			   _
+--			F | |B
+--				G
+--				_
+--		 	 E| | C
+--				_ .DP
+--				D
+-- 
+--   1(E) 2(D) 3(GROUND) 4(C) 5(DP)
+--
+entity LED_DISPLAY is port
+(
+	N : in std_logic_vector(3 downto 0);	-- nombre codé binaire 0 (0000) à 9 (1000)
+	A, B, C, D, E, F, G : out std_logic		-- segments led de l'afficheur
+);
+end;
+
+
+architecture LED_DISPLAY_ARCHITECTURE of LED_DISPLAY is
+begin
+
+-- on allume les segments A à G en fonction du nombre N
+A <= '1' when (N="0000" or N="0010" or N="0011" or N="0101" or N="0110" or N="0111" or N="1000" or N="1001") else '0';
+B <= '1' when (N="0000" or N="0001" or N="0010" or N="0011" or N="0100" or N="0111" or N="1000" or N="1001") else '0';
+C <= '1' when (N="0000" or N="0001" or N="0011" or N="0100" or N="0101" or N="0110" or N="0111" or N="1000" or N="1001") else '0';
+D <= '1' when (N="0000" or N="0010" or N="0011" or N="0101" or N="0110" or N="1000" or N="1001") else '0';
+E <= '1' when (N="0000" or N="0010" or N="0110" or N="1000") else '0';
+F <= '1' when (N="0000" or N="0100" or N="0101" or N="0110" or N="1000" or N="1001") else '0';
+G <= '1' when (N="0010" or N="0011" or N="0100" or N="0101" or N="0110" or N="1000" or N="1001") else '0';
+
+
+end LED_DISPLAY_ARCHITECTURE;
+
+
+
+
+--
+-- Diviseur de fréquence  de l'horloge de la carte (pin 12 sur la carte "perso ALTERA MAX2")
+--
+library ieee;
+use ieee.std_logic_1164.all;
+entity CLOCK is
+generic (diviseur : integer); -- par exemple pour une horloge 50 MHz diviseur = 50_000_000 pour obtenir 1 Hz
+port (
+	CLK_IN  : in std_logic;
+	CLK_OUT : inout std_logic
+);
+end;
+
+
+-- Voir https://www.youtube.com/watch?v=9HvN6tlGteo
+architecture CLOCK_ARCHITECTURE of CLOCK is
+signal Compteur : integer := 1;
+begin
+
+	process(CLK_IN)
+	
+	begin
+			-- On compte les fronts montants de l'horloge en entrée pour déterminer le changement d'état à la demi période de sortie
+			if rising_edge(CLK_IN) then
+			-- le Compteur permet de déterminer quand on atteint la demi-période pour l'horloge en sortie 
+				if Compteur > diviseur / 2 then
+					CLK_OUT <= not CLK_OUT;
+					Compteur <= 1;
+				else
+					Compteur<= Compteur+1;
+				end if;
+			end if;
+		
+	end process;
+	
+end CLOCK_ARCHITECTURE;
+
+
+
+
+--
+-- NOMBRE_A_AFFICHER
+-- fournit un nombre en sortie à chaque coup d'horloge en entrée
+-- les nombres sont stockés dans une table
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_Logic_Arith.all;
+entity NOMBRE_A_AFFICHER is port
+(
+	CLOCK : in std_logic; -- horloge en entrée
+	nombre : out std_logic_vector(3 downto 0) -- nombre en sortie
+);
+end;
+
+architecture NOMBRE_A_AFFICHER_ARCHITECTURE of NOMBRE_A_AFFICHER is
+	-- table où sont stockés les nombres à produire en sortie
+	type Table is array (natural range <>) of natural range 0 to 9;
+	
+begin
+	process
+	
+	variable table_de_nombres : Table(1 to 5) :=  (3, 1, 4, 1, 5);
+	variable indice : natural range 1 to table_de_nombres'length := 1;	-- indice dans table_de_nombres
+	
+	begin		
+
+		nombre <= conv_std_logic_vector(table_de_nombres(indice), nombre'length);	-- nombre <= table_de_nombres(indice)
+		
+		-- calcul de l'indice suivant dans la table
+		if(indice = table_de_nombres'length) then
+			indice := 1;
+		else
+			indice := indice + 1;
+		end if;
+		
+		wait until rising_edge(CLOCK);	-- à chaque coup d'horloge on passe au nombre suivant
+		
+	end process;
+end NOMBRE_A_AFFICHER_ARCHITECTURE;
+
+
+
+
+--
+-- Afficheur
+--
+library ieee;
+use ieee.std_logic_1164.all;
+entity AFFICHEUR_DISPLAY is port
+(
+	CLOCK_IN : in std_logic; -- clock 50 MHz en entrée
+	A, B, C, D, E, F, G : out std_logic	-- segments led de l'afficheur
+);
+end;
+
+architecture AFFICHEUR_DISPLAY_ARCHITECTURE of AFFICHEUR_DISPLAY is
+
+	component LED_DISPLAY
+	port (
+		N : in std_logic_vector(3 downto 0);	-- nombre codé binaire 0 (0000) à 9 (1000)
+		A, B, C, D, E, F, G : out std_logic		-- segments led de l'afficheur
+	);
+	end component LED_DISPLAY;
+	
+	component CLOCK
+	generic (diviseur : integer); -- par exemple pour une horloge 50 MHz diviseur = 50_000_000 pour obtenir 1 Hz
+	port (
+		CLK_IN  : in std_logic;
+		CLK_OUT : out std_logic
+	);
+	end component CLOCK;
+	
+	component NOMBRE_A_AFFICHER
+	port (
+		CLOCK : in std_logic; -- horloge en entrée
+		nombre : out std_logic_vector(3 downto 0) -- nombre en sortie
+	);
+	end component NOMBRE_A_AFFICHER;
+
+	signal CLK : std_logic; -- clk en sortie de CLOCK : donne le top pour l'incrément du compteur
+	signal NB : std_logic_vector(3 downto 0);
+	
+begin
+
+	Horloge : CLOCK generic map (diviseur => 25_000_000) port map (CLK_IN => CLOCK_IN, CLK_OUT => CLK); -- 0,5 Hz pour 50 MHz en entrée
+	Generateur_de_nombres : NOMBRE_A_AFFICHER port map (CLOCK => CLK, nombre => NB);
+	Afficheur_de_nombres : LED_DISPLAY port map (	N => NB,
+												A => A,
+												B => B,
+												C => C,
+												D => D,
+												E => E,
+												F => F,
+												G => G);
+	
+end AFFICHEUR_DISPLAY_ARCHITECTURE;
+

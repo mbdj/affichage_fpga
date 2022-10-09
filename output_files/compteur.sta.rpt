@@ -1,0 +1,551 @@
+Timing Analyzer report for compteur
+Sun Oct  9 17:21:04 2022
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'CLOCK_IN'
+ 12. Setup: 'CLOCK:Horloge|CLK_OUT~reg0'
+ 13. Hold: 'CLOCK_IN'
+ 14. Hold: 'CLOCK:Horloge|CLK_OUT~reg0'
+ 15. Setup Transfers
+ 16. Hold Transfers
+ 17. Report TCCS
+ 18. Report RSKM
+ 19. Unconstrained Paths Summary
+ 20. Clock Status Summary
+ 21. Unconstrained Output Ports
+ 22. Unconstrained Output Ports
+ 23. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; compteur                                            ;
+; Device Family         ; MAX II                                              ;
+; Device Name           ; EPM240T100C5                                        ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Slow Model                                          ;
+; Rise/Fall Delays      ; Unavailable                                         ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                 ;
++----------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------+
+; Clock Name                 ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                        ;
++----------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------+
+; CLOCK:Horloge|CLK_OUT~reg0 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK:Horloge|CLK_OUT~reg0 } ;
+; CLOCK_IN                   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_IN }                   ;
++----------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------+
+
+
++------------------------------------------------------------------+
+; Fmax Summary                                                     ;
++------------+-----------------+----------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                 ; Note ;
++------------+-----------------+----------------------------+------+
+; 102.75 MHz ; 102.75 MHz      ; CLOCK_IN                   ;      ;
+; 353.73 MHz ; 353.73 MHz      ; CLOCK:Horloge|CLK_OUT~reg0 ;      ;
++------------+-----------------+----------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------------------------+
+; Setup Summary                                       ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; CLOCK_IN                   ; -8.732 ; -266.169      ;
+; CLOCK:Horloge|CLK_OUT~reg0 ; -1.827 ; -10.452       ;
++----------------------------+--------+---------------+
+
+
++-----------------------------------------------------+
+; Hold Summary                                        ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; CLOCK_IN                   ; -1.617 ; -1.617        ;
+; CLOCK:Horloge|CLK_OUT~reg0 ; 1.758  ; 0.000         ;
++----------------------------+--------+---------------+
+
+
+--------------------
+; Recovery Summary ;
+--------------------
+No paths to report.
+
+
+-------------------
+; Removal Summary ;
+-------------------
+No paths to report.
+
+
++-----------------------------------------------------+
+; Minimum Pulse Width Summary                         ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; CLOCK_IN                   ; -2.289 ; -2.289        ;
+; CLOCK:Horloge|CLK_OUT~reg0 ; 0.234  ; 0.000         ;
++----------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'CLOCK_IN'                                                                                                                      ;
++--------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -8.732 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.399      ;
+; -8.731 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.398      ;
+; -8.730 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.397      ;
+; -8.729 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.396      ;
+; -8.465 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.132      ;
+; -8.464 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.131      ;
+; -8.463 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.130      ;
+; -8.462 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.129      ;
+; -8.364 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.031      ;
+; -8.363 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.030      ;
+; -8.363 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.030      ;
+; -8.362 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.029      ;
+; -8.361 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 9.028      ;
+; -8.249 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[12] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.916      ;
+; -8.244 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[11] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.911      ;
+; -8.241 ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.908      ;
+; -8.240 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[10] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.907      ;
+; -8.240 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[13] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.907      ;
+; -8.240 ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.907      ;
+; -8.239 ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.906      ;
+; -8.238 ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.905      ;
+; -8.223 ; CLOCK:Horloge|Compteur[17] ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.890      ;
+; -8.222 ; CLOCK:Horloge|Compteur[17] ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.889      ;
+; -8.221 ; CLOCK:Horloge|Compteur[17] ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.888      ;
+; -8.220 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[31] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.887      ;
+; -8.220 ; CLOCK:Horloge|Compteur[17] ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.887      ;
+; -8.215 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[26] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.882      ;
+; -8.198 ; CLOCK:Horloge|Compteur[7]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.865      ;
+; -8.197 ; CLOCK:Horloge|Compteur[7]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.864      ;
+; -8.196 ; CLOCK:Horloge|Compteur[7]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.863      ;
+; -8.195 ; CLOCK:Horloge|Compteur[7]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.862      ;
+; -8.177 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[15] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.844      ;
+; -8.161 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.828      ;
+; -8.136 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.803      ;
+; -8.125 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[9]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.792      ;
+; -8.124 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[18] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.791      ;
+; -8.122 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[8]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.789      ;
+; -8.112 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[19] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.779      ;
+; -8.097 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[17] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.764      ;
+; -8.096 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.763      ;
+; -8.091 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[28] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.758      ;
+; -8.089 ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[30] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.756      ;
+; -8.066 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.733      ;
+; -8.063 ; CLOCK:Horloge|Compteur[19] ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.730      ;
+; -8.062 ; CLOCK:Horloge|Compteur[19] ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.729      ;
+; -8.061 ; CLOCK:Horloge|Compteur[19] ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.728      ;
+; -8.060 ; CLOCK:Horloge|Compteur[19] ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.727      ;
+; -8.054 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.721      ;
+; -8.036 ; CLOCK:Horloge|Compteur[14] ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.703      ;
+; -8.036 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.703      ;
+; -8.024 ; CLOCK:Horloge|Compteur[14] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.691      ;
+; -8.024 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.691      ;
+; -8.023 ; CLOCK:Horloge|Compteur[9]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.690      ;
+; -8.022 ; CLOCK:Horloge|Compteur[9]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.689      ;
+; -8.021 ; CLOCK:Horloge|Compteur[9]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.688      ;
+; -8.020 ; CLOCK:Horloge|Compteur[9]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.687      ;
+; -8.010 ; CLOCK:Horloge|Compteur[13] ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.677      ;
+; -8.009 ; CLOCK:Horloge|Compteur[13] ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.676      ;
+; -8.008 ; CLOCK:Horloge|Compteur[13] ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.675      ;
+; -8.007 ; CLOCK:Horloge|Compteur[13] ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.674      ;
+; -7.995 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.662      ;
+; -7.988 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.655      ;
+; -7.982 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[12] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.649      ;
+; -7.977 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[11] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.644      ;
+; -7.975 ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.642      ;
+; -7.974 ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.641      ;
+; -7.973 ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.640      ;
+; -7.973 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[10] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.640      ;
+; -7.973 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[13] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.640      ;
+; -7.972 ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.639      ;
+; -7.958 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.625      ;
+; -7.953 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[31] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.620      ;
+; -7.948 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[26] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.615      ;
+; -7.931 ; CLOCK:Horloge|Compteur[15] ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.598      ;
+; -7.930 ; CLOCK:Horloge|Compteur[15] ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.597      ;
+; -7.929 ; CLOCK:Horloge|Compteur[15] ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.596      ;
+; -7.928 ; CLOCK:Horloge|Compteur[15] ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.595      ;
+; -7.920 ; CLOCK:Horloge|Compteur[11] ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.587      ;
+; -7.914 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.581      ;
+; -7.911 ; CLOCK:Horloge|Compteur[4]  ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.578      ;
+; -7.910 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[15] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.577      ;
+; -7.908 ; CLOCK:Horloge|Compteur[11] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.575      ;
+; -7.899 ; CLOCK:Horloge|Compteur[4]  ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.566      ;
+; -7.894 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[12] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.561      ;
+; -7.894 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.561      ;
+; -7.886 ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[27] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.553      ;
+; -7.884 ; CLOCK:Horloge|Compteur[14] ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.551      ;
+; -7.884 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.551      ;
+; -7.881 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[12] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.548      ;
+; -7.880 ; CLOCK:Horloge|Compteur[20] ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.547      ;
+; -7.879 ; CLOCK:Horloge|Compteur[20] ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.546      ;
+; -7.878 ; CLOCK:Horloge|Compteur[20] ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.545      ;
+; -7.877 ; CLOCK:Horloge|Compteur[20] ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.544      ;
+; -7.876 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[11] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.543      ;
+; -7.872 ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.539      ;
+; -7.872 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[10] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.539      ;
+; -7.872 ; CLOCK:Horloge|Compteur[6]  ; CLOCK:Horloge|Compteur[13] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.539      ;
+; -7.869 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.536      ;
+; -7.858 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[9]  ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.525      ;
+; -7.857 ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[18] ; CLOCK_IN     ; CLOCK_IN    ; 1.000        ; 0.000      ; 8.524      ;
++--------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'CLOCK:Horloge|CLK_OUT~reg0'                                                                                                                                                                               ;
++--------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+; Slack  ; From Node                                         ; To Node                                           ; Launch Clock               ; Latch Clock                ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+; -1.827 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.494      ;
+; -1.781 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.448      ;
+; -1.778 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.445      ;
+; -1.778 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.445      ;
+; -1.773 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.440      ;
+; -1.770 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.437      ;
+; -1.565 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.232      ;
+; -1.515 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.182      ;
+; -1.514 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.181      ;
+; -1.511 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.178      ;
+; -1.510 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 2.177      ;
+; -1.322 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 1.989      ;
+; -1.320 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 1.987      ;
+; -1.316 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 1.983      ;
+; -1.315 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 1.982      ;
+; -1.312 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 1.000        ; 0.000      ; 1.979      ;
++--------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'CLOCK_IN'                                                                                                                                     ;
++--------+----------------------------+----------------------------+----------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                  ; To Node                    ; Launch Clock               ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------+----------------------------+----------------------------+-------------+--------------+------------+------------+
+; -1.617 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN    ; 0.000        ; 3.348      ; 2.328      ;
+; -1.117 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN    ; -0.500       ; 3.348      ; 2.328      ;
+; 1.668  ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 1.889      ;
+; 3.360  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[30] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 3.581      ;
+; 3.380  ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 3.601      ;
+; 3.387  ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 3.608      ;
+; 3.389  ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 3.610      ;
+; 3.736  ; CLOCK:Horloge|Compteur[5]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 3.957      ;
+; 3.993  ; CLOCK:Horloge|Compteur[28] ; CLOCK:Horloge|Compteur[28] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.214      ;
+; 4.186  ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.407      ;
+; 4.196  ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.417      ;
+; 4.306  ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.527      ;
+; 4.520  ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.741      ;
+; 4.603  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.824      ;
+; 4.605  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.826      ;
+; 4.609  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.830      ;
+; 4.623  ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.844      ;
+; 4.689  ; CLOCK:Horloge|Compteur[28] ; CLOCK:Horloge|Compteur[30] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.910      ;
+; 4.736  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[31] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.957      ;
+; 4.743  ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 4.964      ;
+; 4.943  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.164      ;
+; 4.945  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.166      ;
+; 4.949  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.170      ;
+; 4.975  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.196      ;
+; 4.980  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.201      ;
+; 4.988  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[16] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.209      ;
+; 4.990  ; CLOCK:Horloge|Compteur[3]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.211      ;
+; 4.997  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.218      ;
+; 5.002  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[27] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.223      ;
+; 5.002  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[23] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.223      ;
+; 5.028  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[6]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.249      ;
+; 5.032  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[7]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.253      ;
+; 5.035  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.256      ;
+; 5.037  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.258      ;
+; 5.041  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.262      ;
+; 5.042  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.263      ;
+; 5.078  ; CLOCK:Horloge|Compteur[4]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.299      ;
+; 5.093  ; CLOCK:Horloge|Compteur[2]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.314      ;
+; 5.117  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.338      ;
+; 5.119  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.340      ;
+; 5.123  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.344      ;
+; 5.155  ; CLOCK:Horloge|Compteur[26] ; CLOCK:Horloge|Compteur[26] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.376      ;
+; 5.170  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.391      ;
+; 5.172  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.393      ;
+; 5.176  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.397      ;
+; 5.207  ; CLOCK:Horloge|Compteur[25] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.428      ;
+; 5.209  ; CLOCK:Horloge|Compteur[25] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.430      ;
+; 5.213  ; CLOCK:Horloge|Compteur[1]  ; CLOCK:Horloge|Compteur[4]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.434      ;
+; 5.213  ; CLOCK:Horloge|Compteur[25] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.434      ;
+; 5.292  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[28] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.513      ;
+; 5.292  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[30] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.513      ;
+; 5.304  ; CLOCK:Horloge|Compteur[4]  ; CLOCK:Horloge|Compteur[5]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.525      ;
+; 5.315  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.536      ;
+; 5.320  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.541      ;
+; 5.328  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[16] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.549      ;
+; 5.337  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.558      ;
+; 5.342  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[27] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.563      ;
+; 5.342  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[27] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.563      ;
+; 5.342  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[23] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.563      ;
+; 5.356  ; CLOCK:Horloge|Compteur[21] ; CLOCK:Horloge|Compteur[21] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.577      ;
+; 5.358  ; CLOCK:Horloge|Compteur[21] ; CLOCK:Horloge|Compteur[22] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.579      ;
+; 5.362  ; CLOCK:Horloge|Compteur[21] ; CLOCK:Horloge|Compteur[0]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.583      ;
+; 5.368  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[6]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.589      ;
+; 5.372  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[7]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.593      ;
+; 5.382  ; CLOCK:Horloge|Compteur[29] ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.603      ;
+; 5.401  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[31] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.622      ;
+; 5.407  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.628      ;
+; 5.412  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.633      ;
+; 5.420  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[16] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.641      ;
+; 5.429  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.650      ;
+; 5.434  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[27] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.655      ;
+; 5.434  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[23] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.655      ;
+; 5.460  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[6]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.681      ;
+; 5.464  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[7]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.685      ;
+; 5.469  ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[3]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.690      ;
+; 5.470  ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[2]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.691      ;
+; 5.470  ; CLOCK:Horloge|Compteur[0]  ; CLOCK:Horloge|Compteur[1]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.691      ;
+; 5.474  ; CLOCK:Horloge|Compteur[30] ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.695      ;
+; 5.481  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[30] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.702      ;
+; 5.483  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[28] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.704      ;
+; 5.489  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[17] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.710      ;
+; 5.489  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.710      ;
+; 5.494  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.715      ;
+; 5.502  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[16] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.723      ;
+; 5.504  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[19] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.725      ;
+; 5.506  ; CLOCK:Horloge|Compteur[24] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.727      ;
+; 5.511  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.732      ;
+; 5.514  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[8]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.735      ;
+; 5.516  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[18] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.737      ;
+; 5.516  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[23] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.737      ;
+; 5.517  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[9]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.738      ;
+; 5.528  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.749      ;
+; 5.542  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[24] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.763      ;
+; 5.542  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[6]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.763      ;
+; 5.546  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[7]  ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.767      ;
+; 5.547  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[14] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.768      ;
+; 5.553  ; CLOCK:Horloge|Compteur[31] ; CLOCK:Horloge|Compteur[25] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.774      ;
+; 5.555  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[16] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.776      ;
+; 5.556  ; CLOCK:Horloge|Compteur[27] ; CLOCK:Horloge|Compteur[20] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.777      ;
+; 5.564  ; CLOCK:Horloge|Compteur[22] ; CLOCK:Horloge|Compteur[29] ; CLOCK_IN                   ; CLOCK_IN    ; 0.000        ; 0.000      ; 5.785      ;
++--------+----------------------------+----------------------------+----------------------------+-------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'CLOCK:Horloge|CLK_OUT~reg0'                                                                                                                                                                               ;
++-------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+; Slack ; From Node                                         ; To Node                                           ; Launch Clock               ; Latch Clock                ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+; 1.758 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 1.979      ;
+; 1.761 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 1.982      ;
+; 1.762 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 1.983      ;
+; 1.766 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 1.987      ;
+; 1.768 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 1.989      ;
+; 1.956 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.177      ;
+; 1.957 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.178      ;
+; 1.960 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.181      ;
+; 1.961 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.182      ;
+; 2.011 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.232      ;
+; 2.216 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.437      ;
+; 2.219 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.440      ;
+; 2.224 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.445      ;
+; 2.224 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|nombre[1] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.445      ;
+; 2.227 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[0] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.448      ;
+; 2.273 ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[1] ; NOMBRE_A_AFFICHER:Generateur_de_nombres|indice[2] ; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 0.000        ; 0.000      ; 2.494      ;
++-------+---------------------------------------------------+---------------------------------------------------+----------------------------+----------------------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                     ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; From Clock                 ; To Clock                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 16       ; 0        ; 0        ; 0        ;
+; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN                   ; 1        ; 1        ; 0        ; 0        ;
+; CLOCK_IN                   ; CLOCK_IN                   ; 2199     ; 0        ; 0        ; 0        ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                      ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; From Clock                 ; To Clock                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; 16       ; 0        ; 0        ; 0        ;
+; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK_IN                   ; 1        ; 1        ; 0        ; 0        ;
+; CLOCK_IN                   ; CLOCK_IN                   ; 2199     ; 0        ; 0        ; 0        ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 0     ; 0    ;
+; Unconstrained Input Port Paths  ; 0     ; 0    ;
+; Unconstrained Output Ports      ; 7     ; 7    ;
+; Unconstrained Output Port Paths ; 21    ; 21   ;
++---------------------------------+-------+------+
+
+
++------------------------------------------------------------------------------+
+; Clock Status Summary                                                         ;
++----------------------------+----------------------------+------+-------------+
+; Target                     ; Clock                      ; Type ; Status      ;
++----------------------------+----------------------------+------+-------------+
+; CLOCK:Horloge|CLK_OUT~reg0 ; CLOCK:Horloge|CLK_OUT~reg0 ; Base ; Constrained ;
+; CLOCK_IN                   ; CLOCK_IN                   ; Base ; Constrained ;
++----------------------------+----------------------------+------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; A           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; B           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; C           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; E           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; F           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; G           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; A           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; B           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; C           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; E           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; F           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; G           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+    Info: Processing started: Sun Oct  9 17:21:04 2022
+Info: Command: quartus_sta compteur -c compteur
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'compteur.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK:Horloge|CLK_OUT~reg0 CLOCK:Horloge|CLK_OUT~reg0
+    Info (332105): create_clock -period 1.000 -name CLOCK_IN CLOCK_IN
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -8.732
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -8.732            -266.169 CLOCK_IN 
+    Info (332119):    -1.827             -10.452 CLOCK:Horloge|CLK_OUT~reg0 
+Info (332146): Worst-case hold slack is -1.617
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.617              -1.617 CLOCK_IN 
+    Info (332119):     1.758               0.000 CLOCK:Horloge|CLK_OUT~reg0 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 CLOCK_IN 
+    Info (332119):     0.234               0.000 CLOCK:Horloge|CLK_OUT~reg0 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4680 megabytes
+    Info: Processing ended: Sun Oct  9 17:21:04 2022
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

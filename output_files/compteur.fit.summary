@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sun Oct  9 17:21:02 2022
+Quartus Prime Version : 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+Revision Name : compteur
+Top-level Entity Name : AFFICHEUR_DISPLAY
+Family : MAX II
+Device : EPM240T100C5
+Timing Models : Final
+Total logic elements : 90 / 240 ( 38 % )
+Total pins : 8 / 80 ( 10 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

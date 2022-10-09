@@ -1,0 +1,112 @@
+|AFFICHEUR_DISPLAY
+CLOCK_IN => CLOCK:Horloge.CLK_IN
+A << LED_DISPLAY:Afficheur_de_nombres.A
+B << LED_DISPLAY:Afficheur_de_nombres.B
+C << LED_DISPLAY:Afficheur_de_nombres.C
+D << LED_DISPLAY:Afficheur_de_nombres.D
+E << LED_DISPLAY:Afficheur_de_nombres.E
+F << LED_DISPLAY:Afficheur_de_nombres.F
+G << LED_DISPLAY:Afficheur_de_nombres.G
+
+
+|AFFICHEUR_DISPLAY|CLOCK:Horloge
+CLK_IN => Compteur[0].CLK
+CLK_IN => Compteur[1].CLK
+CLK_IN => Compteur[2].CLK
+CLK_IN => Compteur[3].CLK
+CLK_IN => Compteur[4].CLK
+CLK_IN => Compteur[5].CLK
+CLK_IN => Compteur[6].CLK
+CLK_IN => Compteur[7].CLK
+CLK_IN => Compteur[8].CLK
+CLK_IN => Compteur[9].CLK
+CLK_IN => Compteur[10].CLK
+CLK_IN => Compteur[11].CLK
+CLK_IN => Compteur[12].CLK
+CLK_IN => Compteur[13].CLK
+CLK_IN => Compteur[14].CLK
+CLK_IN => Compteur[15].CLK
+CLK_IN => Compteur[16].CLK
+CLK_IN => Compteur[17].CLK
+CLK_IN => Compteur[18].CLK
+CLK_IN => Compteur[19].CLK
+CLK_IN => Compteur[20].CLK
+CLK_IN => Compteur[21].CLK
+CLK_IN => Compteur[22].CLK
+CLK_IN => Compteur[23].CLK
+CLK_IN => Compteur[24].CLK
+CLK_IN => Compteur[25].CLK
+CLK_IN => Compteur[26].CLK
+CLK_IN => Compteur[27].CLK
+CLK_IN => Compteur[28].CLK
+CLK_IN => Compteur[29].CLK
+CLK_IN => Compteur[30].CLK
+CLK_IN => Compteur[31].CLK
+CLK_IN => CLK_OUT~reg0.CLK
+CLK_OUT <> CLK_OUT~reg0
+
+
+|AFFICHEUR_DISPLAY|NOMBRE_A_AFFICHER:Generateur_de_nombres
+CLOCK => indice[0].CLK
+CLOCK => indice[1].CLK
+CLOCK => indice[2].CLK
+CLOCK => nombre[0]~reg0.CLK
+CLOCK => nombre[1]~reg0.CLK
+CLOCK => nombre[2]~reg0.CLK
+CLOCK => nombre[3]~reg0.CLK
+nombre[0] <= nombre[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nombre[1] <= nombre[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nombre[2] <= nombre[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nombre[3] <= nombre[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AFFICHEUR_DISPLAY|LED_DISPLAY:Afficheur_de_nombres
+N[0] => Equal0.IN3
+N[0] => Equal1.IN2
+N[0] => Equal2.IN3
+N[0] => Equal3.IN3
+N[0] => Equal4.IN1
+N[0] => Equal5.IN3
+N[0] => Equal6.IN2
+N[0] => Equal7.IN3
+N[0] => Equal8.IN3
+N[0] => Equal9.IN2
+N[1] => Equal0.IN2
+N[1] => Equal1.IN3
+N[1] => Equal2.IN2
+N[1] => Equal3.IN1
+N[1] => Equal4.IN3
+N[1] => Equal5.IN2
+N[1] => Equal6.IN1
+N[1] => Equal7.IN1
+N[1] => Equal8.IN2
+N[1] => Equal9.IN1
+N[2] => Equal0.IN1
+N[2] => Equal1.IN1
+N[2] => Equal2.IN1
+N[2] => Equal3.IN2
+N[2] => Equal4.IN2
+N[2] => Equal5.IN1
+N[2] => Equal6.IN0
+N[2] => Equal7.IN0
+N[2] => Equal8.IN1
+N[2] => Equal9.IN3
+N[3] => Equal0.IN0
+N[3] => Equal1.IN0
+N[3] => Equal2.IN0
+N[3] => Equal3.IN0
+N[3] => Equal4.IN0
+N[3] => Equal5.IN0
+N[3] => Equal6.IN3
+N[3] => Equal7.IN2
+N[3] => Equal8.IN0
+N[3] => Equal9.IN0
+A <= A.DB_MAX_OUTPUT_PORT_TYPE
+B <= B.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+E <= E.DB_MAX_OUTPUT_PORT_TYPE
+F <= F.DB_MAX_OUTPUT_PORT_TYPE
+G <= G.DB_MAX_OUTPUT_PORT_TYPE
+
+

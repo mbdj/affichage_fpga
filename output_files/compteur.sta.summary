@@ -1,0 +1,29 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'CLOCK_IN'
+Slack : -8.732
+TNS   : -266.169
+
+Type  : Setup 'CLOCK:Horloge|CLK_OUT~reg0'
+Slack : -1.827
+TNS   : -10.452
+
+Type  : Hold 'CLOCK_IN'
+Slack : -1.617
+TNS   : -1.617
+
+Type  : Hold 'CLOCK:Horloge|CLK_OUT~reg0'
+Slack : 1.758
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'CLOCK_IN'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'CLOCK:Horloge|CLK_OUT~reg0'
+Slack : 0.234
+TNS   : 0.000
+
+------------------------------------------------------------
