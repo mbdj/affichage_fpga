@@ -140,25 +140,39 @@ architecture NOMBRE_A_AFFICHER_ARCHITECTURE of NOMBRE_A_AFFICHER is
 begin
 	process
 	
-	variable table_de_nombres : Table(1 to 5) :=  (3, 1, 4, 1, 5);
+	variable table_de_nombres : Table(1 to 5) :=  (0, 1, 2, 3, 4);
 	variable indice : natural range 1 to table_de_nombres'length := 1;	-- indice dans table_de_nombres
 	
 	begin		
 
-		nombre <= conv_std_logic_vector(table_de_nombres(indice), nombre'length);	-- nombre <= table_de_nombres(indice)
+		-- conversion d'un integer en std_logic : nombre <= table_de_nombres(indice)
+		nombre <= conv_std_logic_vector(table_de_nombres(indice), nombre'length);
 		
 		-- calcul de l'indice suivant dans la table
 		if(indice = table_de_nombres'length) then
 			indice := 1;
+			
+			-- on remplit table_de_nombres avec les nombres suivants
+			-- ça ne sert à rien : c'est juste pour tester les possibilités de stockage d'un fpga
+			if table_de_nombres(1) = 0 then	-- on incrémente pour avoir (5,6,7,8,9)
+				for i in 1 to table_de_nombres'length loop
+					table_de_nombres(i) := table_de_nombres(i) + table_de_nombres'length;
+				end loop;
+			else -- on remplit à nouveau avec (0,1,2,3,4))
+				for i in 1 to table_de_nombres'length loop
+					table_de_nombres(i) := i-1;
+				end loop;
+			end if;
+			
 		else
 			indice := indice + 1;
 		end if;
+		
 		
 		wait until rising_edge(CLOCK);	-- à chaque coup d'horloge on passe au nombre suivant
 		
 	end process;
 end NOMBRE_A_AFFICHER_ARCHITECTURE;
-
 
 
 
